@@ -22,18 +22,13 @@ const handleClick = () => {
     .then((data) => {
         render(data)
         mapOrder(data)
-
     })
 }
 
 function incrementQuantity(e){
     let quantity = 1;
-    console.log(quantity)
-    console.log(e.target.parentElement.parentElement.dataset.menuitemid)
-
     let menuItemId = parseInt(e.target.parentElement.parentElement.dataset.menuitemid);
     const newOrder = { menuItemId, quantity };
-    console.log(newOrder)
 
     fetch("http://localhost:8080/order/items", {
         method: 'POST',
@@ -46,44 +41,62 @@ function incrementQuantity(e){
     })
         .then((response) => {
             if (response.ok) {
-                alert('Saved!');
+                alert('Quantity changed!');
                 location.reload();
             }
         })
         .catch((err) => {
             console.error(err);
-            alert('Could not add item!');
+            alert('Quantity could not be changed!');
         });
 }
 
 function decrementQuantity(e){
-    let quantity = -1;
-    console.log(quantity)
-    console.log(e.target.parentElement.parentElement.dataset.menuitemid)
+    let currentQuantity = parseInt(e.target.parentElement.children[1].textContent);
+    let orderItemId = parseInt(e.target.parentElement.parentElement.children[3].dataset.id);
+    if(currentQuantity == 1){
 
-    let menuItemId = parseInt(e.target.parentElement.parentElement.dataset.menuitemid);
-    const newOrder = { menuItemId, quantity };
-    console.log(newOrder)
-
-    fetch("http://localhost:8080/order/items", {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newOrder)
-
-    })
-        .then((response) => {
-            if (response.ok) {
-                alert('Saved!');
-                location.reload();
-            }
+        fetch("http://localhost:8080/order/" + orderItemId, {
+            method: 'DELETE',
         })
-        .catch((err) => {
-            console.error(err);
-            alert('Could not add item!');
-        });
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                console.log(data);
+                alert('Item removed!');
+                location.reload();
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Could not delete order item!');
+            });
+    } else {
+        let quantity = -1;
+        let menuItemId = parseInt(e.target.parentElement.parentElement.dataset.menuitemid);
+        const newOrder = { menuItemId, quantity };
+    
+        fetch("http://localhost:8080/order/items", {
+            method: 'POST',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+    
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert('Quantity changed!');
+                    location.reload();
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Quantity could not be changed!');
+            });
+    }
+
 }
 
 const mappedOrder = [];

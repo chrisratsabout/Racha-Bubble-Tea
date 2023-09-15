@@ -7,7 +7,6 @@ export default function Menu() {
     const [selectedItem, setSelectedItem] = useState("")
     const [selectedMenuItemId, setSelectedMenuItemId] = useState("")
 
-
     function handleClick(e){
         setActive(true)
         setSelectedItem(e.target.parentElement.children[0].textContent)
@@ -211,8 +210,6 @@ export default function Menu() {
         <p>${banhMiItem.price.toFixed(2)}</p>
         </div>
     })
-
-
 
     return (
         <>
