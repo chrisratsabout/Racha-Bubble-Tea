@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function AddToOrderModal( {closeAddToOrderModal, selectedItem, selectedMenuItemId}) {
 const [quantity, setQuantity] = useState(0);
 const [menuItemId, setMenuItemId] = useState(selectedMenuItemId);
-// const [isDisabled, setIsDisabled] = useState("true")
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,10 +53,9 @@ function minusCountHandler(){
                     <label htmlFor="quantity" >Quantity: </label>
                     <div className="quantity-container">
                     <i className="fa-solid fa-circle-minus"  onClick={minusCountHandler}></i>
-                    {quantity}
+                    <p style={{fontSize:20}}>{quantity}</p>
                     <i className="fa-solid fa-circle-plus" onClick={addCountHandler}></i>
                     </div>
-                    {/* <input type="number" id="quantity" value={quantity} onChange={(e)=> setQuantity(e.target.value)}/> */}
                         <button className="add-to-order-btn">Add To Order</button>
                 </form>
             </div>
