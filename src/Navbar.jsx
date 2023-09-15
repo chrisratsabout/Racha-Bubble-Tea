@@ -26,12 +26,75 @@ const handleClick = () => {
     })
 }
 
+function incrementQuantity(e){
+    let quantity = 1;
+    console.log(quantity)
+    console.log(e.target.parentElement.parentElement.dataset.menuitemid)
+
+    let menuItemId = parseInt(e.target.parentElement.parentElement.dataset.menuitemid);
+    const newOrder = { menuItemId, quantity };
+    console.log(newOrder)
+
+    fetch("http://localhost:8080/order/items", {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newOrder)
+
+    })
+        .then((response) => {
+            if (response.ok) {
+                alert('Saved!');
+                location.reload();
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            alert('Could not add item!');
+        });
+}
+
+function decrementQuantity(e){
+    let quantity = -1;
+    console.log(quantity)
+    console.log(e.target.parentElement.parentElement.dataset.menuitemid)
+
+    let menuItemId = parseInt(e.target.parentElement.parentElement.dataset.menuitemid);
+    const newOrder = { menuItemId, quantity };
+    console.log(newOrder)
+
+    fetch("http://localhost:8080/order/items", {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newOrder)
+
+    })
+        .then((response) => {
+            if (response.ok) {
+                alert('Saved!');
+                location.reload();
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            alert('Could not add item!');
+        });
+}
+
 const mappedOrder = [];
 function render(orderItems){
     for(let i = 0; i < orderItems.selectedItemList.length; i++){
-        mappedOrder.push(<div className="order-item" key={orderItems.selectedItemList[i].orderItemId}>
+        mappedOrder.push(<div className="order-item" key={orderItems.selectedItemList[i].menuItemId} data-menuitemid={orderItems.selectedItemList[i].menuItemId}>
         <p className="order-item-name"><b>{orderItems.selectedItemList[i].name}</b></p>
-        <p>Quantity: {orderItems.selectedItemList[i].quantity}</p> 
+        <div className="quantity-order-modal">
+        <p>Quantity: </p><span className="quantity-order-item">{orderItems.selectedItemList[i].quantity}</span> <i className="fa-solid fa-circle-minus" onClick={decrementQuantity}></i><i className="fa-solid fa-circle-plus" onClick={incrementQuantity}></i>
+        </div>
+        
         <p>Price: ${orderItems.selectedItemList[i].price.toFixed(2)}</p>
         <i className="fa-solid fa-trash delete-order-btn" data-id={orderItems.selectedItemList[i].orderItemId} onClick={deleteItem}></i>
         </div>)
