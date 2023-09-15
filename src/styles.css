@@ -201,6 +201,15 @@ a {
     
 }
 
+.fa-circle-minus {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.fa-circle-plus {
+    margin-left: 10px;
+}
+
 .new-view-order-btn {
     margin-left: auto;
     background-color: #f5f5f5;

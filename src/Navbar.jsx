@@ -31,7 +31,7 @@ function render(orderItems){
     for(let i = 0; i < orderItems.selectedItemList.length; i++){
         mappedOrder.push(<div className="order-item" key={orderItems.selectedItemList[i].orderItemId}>
         <p className="order-item-name"><b>{orderItems.selectedItemList[i].name}</b></p>
-        <p>Quantity: {orderItems.selectedItemList[i].quantity}</p>
+        <p>Quantity: {orderItems.selectedItemList[i].quantity}</p> 
         <p>Price: ${orderItems.selectedItemList[i].price.toFixed(2)}</p>
         <i className="fa-solid fa-trash delete-order-btn" data-id={orderItems.selectedItemList[i].orderItemId} onClick={deleteItem}></i>
         </div>)
@@ -74,7 +74,7 @@ function removeOrderItem(id){
             <nav className="navbar">
                 <a href="https://chrisratsabout.github.io/racha/" className="nav-branding"><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></a>
                 <a className="nav-text" href="https://chrisratsabout.github.io/racha/"><h1>Racha Boba Tea and Desserts</h1></a>
-                <button class="new-view-order-btn" onClick={handleClick}><i class="fa-solid fa-cart-shopping"></i></button>
+                <button className="new-view-order-btn" onClick={handleClick}><i className="fa-solid fa-cart-shopping"></i></button>
             </nav>
             {(order && isActive) && <ViewOrderModal closeViewOrderModal={setActive} order={order} subtotal={subtotal} taxAmount={taxAmount} total={total}/>}
         </>
