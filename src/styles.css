@@ -156,12 +156,28 @@ a {
 .view-order-btn:hover,
 .pay-now-btn:hover,
 .fa-trash:hover,
-.new-view-order-btn:hover,
-.fa-circle-minus:hover,
-.fa-circle-plus:hover {
+.new-view-order-btn:hover {
     cursor: pointer;
     filter: brightness(85%);
     transition: .3s ease-in-out;
+}
+
+.fa-trash:hover {
+    cursor: pointer;
+    background-color: red;
+    transition: .3s ease-in-out; 
+}
+
+.fa-circle-minus:hover {
+    cursor: pointer;
+    color: red;
+    transition: .3s ease-in-out; 
+}
+
+.fa-circle-plus:hover {
+    cursor: pointer;
+    color: rgb(0, 177, 0);
+    transition: .3s ease-in-out; 
 }
 
 /***ADD TO ORDER MODAL***/

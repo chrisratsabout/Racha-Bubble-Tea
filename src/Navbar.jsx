@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import ViewOrderModal from "./ViewOrderModal";
 
+const modalStateFromLocalStorage = JSON.parse(localStorage.getItem("modal")) || false;
 
 export default function Navbar() {
 
-const [isActive, setActive] = useState(false)
-const [order, setOrder] = useState(null)
+const [isActive, setActive] = useState(modalStateFromLocalStorage)
+const [order, setOrder] = useState([])
 const [subtotal, setSubtotal] = useState(null)
 const [taxAmount, setTaxAmount] = useState(null)
 const [total, setTotal] = useState(null)
@@ -15,15 +16,21 @@ const [deleteItemId, setDeleteItemId] = useState("")
 
 const handleClick = () => {
     setActive(true)
+}
+
+function loadOrder() {
     fetch("http://localhost:8080/order")
     .then((response) => {
         return response.json();
     })
     .then((data) => {
+        setOrder(data.selectedItemList)
         render(data)
         mapOrder(data)
     })
 }
+
+useEffect(() => {loadOrder()}, [])
 
 function incrementQuantity(e){
     let quantity = 1;
@@ -39,9 +46,15 @@ function incrementQuantity(e){
         body: JSON.stringify(newOrder)
 
     })
-        .then((response) => {
+        .then(async (response) => {
             if (response.ok) {
-                alert('Quantity changed!');
+                let orderItem = await response.json()
+                console.log(orderItem)
+                mappedOrder = mappedOrder.filter(item => {
+                    item.orderItemId !== orderItem.orderItemId
+                })
+                mappedOrder.push(orderItem);
+                // alert('Quantity changed!');
                 location.reload();
             }
         })
@@ -64,7 +77,7 @@ function decrementQuantity(e){
             })
             .then((data) => {
                 console.log(data);
-                alert('Item removed!');
+                // alert('Item removed!');
                 location.reload();
             })
             .catch((err) => {
@@ -87,8 +100,9 @@ function decrementQuantity(e){
         })
             .then((response) => {
                 if (response.ok) {
-                    alert('Quantity changed!');
+                    // alert('Quantity changed!');
                     location.reload();
+                
                 }
             })
             .catch((err) => {
@@ -99,7 +113,7 @@ function decrementQuantity(e){
 
 }
 
-const mappedOrder = [];
+let mappedOrder = [];
 function render(orderItems){
     for(let i = 0; i < orderItems.selectedItemList.length; i++){
         mappedOrder.push(<div className="order-item" key={orderItems.selectedItemList[i].menuItemId} data-menuitemid={orderItems.selectedItemList[i].menuItemId}>
@@ -115,7 +129,6 @@ function render(orderItems){
 }
 
 function mapOrder(orderItems){
-    setOrder(mappedOrder)
     setSubtotal(orderItems.subtotal.toFixed(2))
     setTaxAmount(orderItems.taxAmount.toFixed(2))
     setTotal(orderItems.total.toFixed(2))
@@ -136,7 +149,6 @@ function removeOrderItem(id){
         })
         .then((data) => {
             console.log(data);
-            alert('Item removed!');
             location.reload();
         })
         .catch((err) => {
@@ -145,6 +157,10 @@ function removeOrderItem(id){
         });
 }
 
+useEffect(() => {
+    localStorage.setItem("modal", JSON.stringify(isActive));
+})
+
     return (
         <>
             <nav className="navbar">
@@ -152,7 +168,16 @@ function removeOrderItem(id){
                 <a className="nav-text" href="https://chrisratsabout.github.io/racha/"><h1>Racha Boba Tea and Desserts</h1></a>
                 <button className="new-view-order-btn" onClick={handleClick}><i className="fa-solid fa-cart-shopping"></i></button>
             </nav>
-            {(order && isActive) && <ViewOrderModal closeViewOrderModal={setActive} order={order} subtotal={subtotal} taxAmount={taxAmount} total={total}/>}
+            {(order && isActive) && 
+            <ViewOrderModal 
+            closeViewOrderModal={setActive} 
+            order={order} 
+            subtotal={subtotal} 
+            taxAmount={taxAmount} 
+            total={total}
+            deleteItem={deleteItem}
+            decrementQuantity={decrementQuantity}
+            incrementQuantity={incrementQuantity}/>}
         </>
     )
 }

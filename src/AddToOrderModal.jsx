@@ -1,36 +1,37 @@
 import React from "react";
 import { useState } from "react";
 
+
 export default function AddToOrderModal( {closeAddToOrderModal, selectedItem, selectedMenuItemId}) {
 const [quantity, setQuantity] = useState(0);
 const [menuItemId, setMenuItemId] = useState(selectedMenuItemId);
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(quantity)
-    console.log(menuItemId)
     const newOrder = { menuItemId, quantity };
-    console.log(newOrder)
 
-    fetch("http://localhost:8080/order/items", {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newOrder)
-
-    })
-        .then((response) => {
-            if (response.ok) {
-                alert('Saved!');
-                location.reload();
-            }
+    if(quantity > 0){
+        fetch("http://localhost:8080/order/items", {
+            method: 'POST',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+    
         })
-        .catch((err) => {
-            console.error(err);
-            alert('Could not add item!');
-        });
+            .then((response) => {
+                if (response.ok) {
+                    alert('Item added!');
+                    location.reload();
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Could not add item!');
+            });
+    }
+
 }
 
 function addCountHandler(){
