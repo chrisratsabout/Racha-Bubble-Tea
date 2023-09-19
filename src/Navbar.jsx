@@ -6,16 +6,17 @@ const modalStateFromLocalStorage = JSON.parse(localStorage.getItem("modal")) || 
 
 export default function Navbar() {
 
-const [isActive, setActive] = useState(modalStateFromLocalStorage)
-const [order, setOrder] = useState([])
-const [subtotal, setSubtotal] = useState(null)
-const [taxAmount, setTaxAmount] = useState(null)
-const [total, setTotal] = useState(null)
-const [deleteItemId, setDeleteItemId] = useState("")
+const [isActive, setActive] = useState(modalStateFromLocalStorage);
+const [order, setOrder] = useState([]);
+const [subtotal, setSubtotal] = useState(null);
+const [taxAmount, setTaxAmount] = useState(null);
+const [total, setTotal] = useState(null);
+const [deleteItemId, setDeleteItemId] = useState("");
+
 
 
 const handleClick = () => {
-    setActive(true)
+    setActive(true);
 }
 
 function loadOrder() {
@@ -24,9 +25,9 @@ function loadOrder() {
         return response.json();
     })
     .then((data) => {
-        setOrder(data.selectedItemList)
-        render(data)
-        mapOrder(data)
+        setOrder(data.selectedItemList);
+        render(data);
+        mapOrder(data);
     })
 }
 
@@ -177,7 +178,8 @@ useEffect(() => {
             total={total}
             deleteItem={deleteItem}
             decrementQuantity={decrementQuantity}
-            incrementQuantity={incrementQuantity}/>}
+            incrementQuantity={incrementQuantity}
+            />}
         </>
     )
 }

@@ -24,6 +24,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     color: #000; 
+    min-height: 100vh;
     
 }
 
@@ -93,6 +94,10 @@ a {
     color: var(--main-color);
     margin-right: auto;
     margin-left: 10px;
+}
+
+.new-view-order-btn.hide {
+    visibility: hidden;
 }
 
 
@@ -196,7 +201,7 @@ a {
 }
 
 /***ADD TO ORDER MODAL***/
-.fa-x {
+.order-modal .fa-x {
     position: relative;
     right: -130px;
     background-color: red;
@@ -204,6 +209,7 @@ a {
     padding: 8px;
     border-radius: 50%;
     height: 30px;
+    width: 30px;
 }
 
 .add-to-order-modal {
@@ -219,6 +225,17 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
   
+}
+
+.close-modal-btn {
+    position: relative;
+    right: -270px;
+    background-color: red;
+    color: #fff;
+    padding: 8px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
 }
 
 .selected-item-name {
@@ -318,6 +335,28 @@ a {
     padding-bottom: 20px;
     color: #959595;
     font-size: 12px;
+}
+
+/***PAYMENT PAGE***/
+.payment-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.order-container {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.pay-order-item {
+    margin: 15px auto;
+}
+
+.pay-order-item-name {
+    font-weight: 600;
 }
 
 /*** NAV BAR MEDIA QUERY***/
