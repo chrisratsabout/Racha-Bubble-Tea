@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
@@ -32,7 +33,7 @@ export default function ViewOrderModal({ closeViewOrderModal, order, subtotal, t
                     <p>Tax: $<span className="tax-amount">{taxAmount}</span></p>
                     <p><b>Total</b>: $<span className="total">{total}</span></p>
                 </div>
-                <button className="pay-now-btn">Pay Now <i className="fa-regular fa-credit-card"></i></button>
+               <Link to="/pay" onClick={()=> closeViewOrderModal(false)}><button className="pay-now-btn">Pay Now <i className="fa-regular fa-credit-card"></i></button></Link> 
 
             </div>
         </>

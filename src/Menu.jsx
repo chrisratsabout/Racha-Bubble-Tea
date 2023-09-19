@@ -7,7 +7,7 @@ export default function Menu() {
     const [selectedItem, setSelectedItem] = useState("")
     const [selectedMenuItemId, setSelectedMenuItemId] = useState("")
 
-    function handleClick(e){
+    function handleClick(e) {
         setActive(true)
         setSelectedItem(e.target.parentElement.children[0].textContent)
         setSelectedMenuItemId(e.target.dataset.menuitemid)
@@ -65,7 +65,7 @@ export default function Menu() {
     ]
 
     const milkTeaList = milkTeaItems.map((milkTea) => {
-        return <div className="menu-item"  key={milkTea.menuItemId}>
+        return <div className="menu-item" key={milkTea.menuItemId}>
             <p className="item-name"><b>{milkTea.name}</b><i onClick={handleClick} className="fa-solid fa-plus milk-tea" data-menuitemid={milkTea.menuItemId}></i></p>
             <p>${milkTea.price.toFixed(2)}</p>
         </div>
@@ -158,10 +158,10 @@ export default function Menu() {
 
     const coffeeItemsList = coffeeItems.map((coffeeItem) => {
         return <div className="menu-item" key={coffeeItem.menuItemId}>
-        <p className="item-name"><b>{coffeeItem.name}</b><i onClick={handleClick} className="fa-solid fa-plus milk-tea" data-menuitemid={coffeeItem.menuItemId} ></i></p>
-        <p className="description-text">{coffeeItem.description}</p>
-        <p>${coffeeItem.price.toFixed(2)}</p>
-    </div>  
+            <p className="item-name"><b>{coffeeItem.name}</b><i onClick={handleClick} className="fa-solid fa-plus milk-tea" data-menuitemid={coffeeItem.menuItemId} ></i></p>
+            <p className="description-text">{coffeeItem.description}</p>
+            <p>${coffeeItem.price.toFixed(2)}</p>
+        </div>
     })
 
     const banhMiItems = [
@@ -205,14 +205,18 @@ export default function Menu() {
 
     const banhMiList = banhMiItems.map((banhMiItem) => {
         return <div className="menu-item" key={banhMiItem.menuItemId}>
-        <p className="item-name"><b>{banhMiItem.name}</b><i onClick={handleClick} className="fa-solid fa-plus milk-tea" data-menuitemid={banhMiItem.menuItemId} key={banhMiItem.menuItemId}></i></p>
-        <p className="description-text">{banhMiItem.description}</p>
-        <p>${banhMiItem.price.toFixed(2)}</p>
+            <p className="item-name"><b>{banhMiItem.name}</b><i onClick={handleClick} className="fa-solid fa-plus milk-tea" data-menuitemid={banhMiItem.menuItemId} key={banhMiItem.menuItemId}></i></p>
+            <p className="description-text">{banhMiItem.description}</p>
+            <p>${banhMiItem.price.toFixed(2)}</p>
         </div>
     })
 
     return (
         <>
+            <div className="top-container">
+                <h2>Menu</h2>
+                <p>Click<i className="fa-solid fa-plus"></i> to add an item to your order.</p>
+            </div>
             <div className="menu-container">
                 <div className="milk-tea-container">
                     <h2>Milk Tea</h2>
@@ -243,14 +247,14 @@ export default function Menu() {
                 </div>
 
                 <div className="banh-mi-container">
-            <h2>Bánh mì</h2>
-            <div className="banh-mi-section">
-                {banhMiList}
-            </div>
-        </div>
+                    <h2>Bánh mì</h2>
+                    <div className="banh-mi-section">
+                        {banhMiList}
+                    </div>
+                </div>
 
             </div>
-            {isActive && <AddToOrderModal closeAddToOrderModal={setActive} selectedItem={selectedItem} selectedMenuItemId={selectedMenuItemId}/>}
+            {isActive && <AddToOrderModal closeAddToOrderModal={setActive} selectedItem={selectedItem} selectedMenuItemId={selectedMenuItemId} />}
         </>
     )
 }

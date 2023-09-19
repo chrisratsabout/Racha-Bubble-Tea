@@ -32,6 +32,21 @@ h3 {
     text-align: center;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+form > input {
+    margin: 10px auto;
+    width: 280px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+
 /*** NAV BAR***/
 
 header {
