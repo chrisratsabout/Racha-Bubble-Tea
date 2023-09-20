@@ -5,6 +5,8 @@ import 'react-credit-cards/es/styles-compiled.css'
 import axios from 'axios'
 import Footer from './Footer'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import PayNavBar from './PayNavBar'
+
 
 const Pay = () => {
     const [number, setNumber] = useState('')
@@ -21,7 +23,6 @@ const Pay = () => {
             .then(res => {
                 setSelectedItems(res.data.selectedItemList)  
                 setData(res.data)
-                console.log(res.data)
             })
             .catch(err => console.log(err))
     }, [])
@@ -44,7 +45,7 @@ const Pay = () => {
 
     return (
         <>
-
+            <PayNavBar />
             <div className="payment-container">
                 <div className="order-container">
                     <h1>My Order:</h1>

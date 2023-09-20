@@ -17,7 +17,7 @@ export default function HomeMenu() {
                 <div className="menu-section-right">
                     <p>Our menu consists of freshly brewed milk tea, fruit tea, carbonated drinks, coffee and well as food
                         items such as Bánh mì and egg waffles. </p>
-                    <Link to="/menu" ><button className="section-btn" ><b>View Menu</b></button></Link>
+                    <Link to="/menu"><button className="section-btn" ><b>View Menu</b></button></Link>
                 </div>
             </div>
         </>

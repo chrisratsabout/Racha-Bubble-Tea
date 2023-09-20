@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import AddToOrderModal from "./AddToOrderModal";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function Menu() {
     const [isActive, setActive] = useState(false);
@@ -214,6 +215,7 @@ export default function Menu() {
 
     return (
         <>
+        <Navbar />
             <div className="top-container">
                 <h2>Menu</h2>
                 <p>Click<i className="fa-solid fa-plus"></i> to add an item to your order.</p>

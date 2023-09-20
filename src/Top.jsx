@@ -6,6 +6,7 @@ export default function Top() {
 
     // function showCartIcon(){
     //     console.log(shoppingCartIcon.classList.add("active"))
+    //     shoppingCartIcon.classList.add("active")
     // }
 
     return (

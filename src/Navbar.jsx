@@ -167,7 +167,7 @@ useEffect(() => {
         <>
             <nav className="navbar">
                 <Link to="/" className="nav-branding"><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></Link>
-                <Link className="nav-text" to="/"><h1>Racha Boba Tea and Desserts</h1></Link>
+                <Link className="nav-text" to="/"><h1>Racha Tea Boba and Desserts</h1></Link>
                 <button className="new-view-order-btn" onClick={handleClick}><i className="fa-solid fa-cart-shopping"></i></button>
             </nav>
             {(order && isActive) && 

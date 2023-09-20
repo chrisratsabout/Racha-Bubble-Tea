@@ -23,9 +23,9 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    color: #000; 
+    color: #000;
     min-height: 100vh;
-    
+
 }
 
 h2,
@@ -40,7 +40,7 @@ form {
     margin: 0 auto;
 }
 
-form > input {
+form>input {
     margin: 10px auto;
     width: 280px;
     padding: 10px;
@@ -91,7 +91,7 @@ a {
     justify-content: space-between;
     align-items: center;
     gap: 60px;
-    
+
 }
 
 .nav-text {
@@ -100,17 +100,34 @@ a {
     margin-left: 10px;
 }
 
+.nav-link {
+    transition: 0.7s ease;
+}
 
+.nav-link:hover {
+    color: var(--main-color);
+}
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
 
-
-
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255);
+}
 
 /*** HOME TOP SECTION ***/
 .top-container {
     margin: 35px auto 0 auto;
     text-align: center;
-    
+
 }
 
 .top-section,
@@ -169,8 +186,7 @@ a {
 }
 
 .section-btn:hover,
-.message-me-btn:hover,
-.go-top-btn:hover {
+.message-me-btn:hover {
     cursor: pointer;
     filter: brightness(85%);
     transition: ease-in-out 0.3s;
@@ -190,7 +206,7 @@ a {
     flex-wrap: wrap;
     gap: 15px;
     width: 80%;
-    margin: 35px auto 20px auto; 
+    margin: 35px auto 20px auto;
 }
 
 .milk-tea-container,
@@ -221,7 +237,6 @@ a {
     padding: 3px;
     border-radius: 48%;
     margin-left: 7px;
-    
 }
 
 .fa-circle-minus {
@@ -241,16 +256,18 @@ a {
     border: none;
     border-radius: 10px;
     font-size: 20px;
- }
-
- .new-view-order-btn.active {
-    visibility: visible;
 }
 
 
-.fa-plus:hover, 
+.new-view-order-btn.active {
+    visibility: visible;
+}
+
+/***BUTTON HOVER STATES***/
+
+.fa-plus:hover,
 .fa-x:hover,
-.add-to-order-btn:hover, 
+.add-to-order-btn:hover,
 .view-order-btn:hover,
 .pay-now-btn:hover,
 .fa-trash:hover,
@@ -263,19 +280,19 @@ a {
 .fa-trash:hover {
     cursor: pointer;
     background-color: red;
-    transition: .3s ease-in-out; 
+    transition: .3s ease-in-out;
 }
 
 .fa-circle-minus:hover {
     cursor: pointer;
     color: red;
-    transition: .3s ease-in-out; 
+    transition: .3s ease-in-out;
 }
 
 .fa-circle-plus:hover {
     cursor: pointer;
     color: rgb(0, 177, 0);
-    transition: .3s ease-in-out; 
+    transition: .3s ease-in-out;
 }
 
 /***ADD TO ORDER MODAL***/
@@ -302,7 +319,7 @@ a {
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
-  
+
 }
 
 .close-modal-btn {
@@ -344,6 +361,7 @@ a {
     margin-left: 7px;
     margin-right: 10px;
 }
+
 .order-modal {
     position: fixed;
     top: 50%;
@@ -385,7 +403,8 @@ a {
     text-align: right;
 }
 
-.add-to-order-modal.active, .order-modal.active {
+.add-to-order-modal.active,
+.order-modal.active {
     visibility: visible;
 }
 
@@ -400,7 +419,10 @@ a {
     justify-content: center;
 }
 
-.add-to-order-btn, .view-order-btn, .pay-now-btn, .message-me-btn {
+.add-to-order-btn,
+.view-order-btn,
+.pay-now-btn,
+.message-me-btn {
     padding: 15px;
     border: none;
     background-color: var(--main-color);
@@ -456,7 +478,9 @@ a {
     flex-wrap: wrap;
 }
 
-.location, .hours, .phone {
+.location,
+.hours,
+.phone {
     width: 274px;
     margin: 10px auto;
     text-align: center;
@@ -475,7 +499,7 @@ a {
 
 .order-container {
     width: 300px;
-   
+
 }
 
 .pay-order-item {
@@ -546,7 +570,7 @@ a {
         flex-direction: column-reverse;
     }
 
-   
+
 
     .section-btn {
         margin: 15px auto;
