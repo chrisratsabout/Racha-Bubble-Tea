@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ViewOrderModal from "./ViewOrderModal";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const modalStateFromLocalStorage = JSON.parse(localStorage.getItem("modal")) || false;
 
@@ -165,8 +166,8 @@ useEffect(() => {
     return (
         <>
             <nav className="navbar">
-                <a href="https://chrisratsabout.github.io/racha/" className="nav-branding"><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></a>
-                <a className="nav-text" href="https://chrisratsabout.github.io/racha/"><h1>Racha Boba Tea and Desserts</h1></a>
+                <Link to="/" className="nav-branding"><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></Link>
+                <Link className="nav-text" to="/"><h1>Racha Boba Tea and Desserts</h1></Link>
                 <button className="new-view-order-btn" onClick={handleClick}><i className="fa-solid fa-cart-shopping"></i></button>
             </nav>
             {(order && isActive) && 
