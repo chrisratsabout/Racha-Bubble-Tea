@@ -347,7 +347,7 @@ a {
 }
 
 .quantity-container {
-    margin-top: 10px;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -361,6 +361,28 @@ a {
     margin-left: 7px;
     margin-right: 10px;
 }
+
+.order-added-msg {
+    color: rgb(0, 177, 0);
+    font-weight: 600;
+    visibility: hidden;
+}
+
+.order-added-msg.active {
+    visibility: visible;
+}
+
+.order-not-added-msg {
+    color: rgb(177, 0, 0);
+    font-weight: 600;
+    visibility: hidden;
+}
+
+.order-not-added-msg.active {
+    visibility: visible;
+}
+
+/***ORDER MODAL***/
 
 .order-modal {
     position: fixed;
@@ -417,6 +439,7 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 35px;
 }
 
 .add-to-order-btn,

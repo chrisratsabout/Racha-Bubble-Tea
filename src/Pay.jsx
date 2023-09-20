@@ -37,12 +37,7 @@ const Pay = () => {
         )
     })
 
-    function goBackToMenu() {
-        shoppingCartIcon.classList.remove("hide")
-    }
-        
-    
-
+   
     return (
         <>
             <PayNavBar />
@@ -54,7 +49,7 @@ const Pay = () => {
                     <p>Subtotal: ${parseFloat(data.subtotal).toFixed(2)}</p>
                     <p>Tax: ${parseFloat(data.taxAmount).toFixed(2)}</p>
                     <strong>Total: ${parseFloat(data.total).toFixed(2)}</strong>
-                    <Link to="/menu" onClick={goBackToMenu}><p className='back-to-menu'>Back To Menu</p></Link>
+                    <Link to="/menu"><p className='back-to-menu'>Back To Menu</p></Link>
                    
                 </div>
                 <div className="credit-card-container">

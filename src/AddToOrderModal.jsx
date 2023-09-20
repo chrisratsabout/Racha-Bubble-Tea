@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function AddToOrderModal( {closeAddToOrderModal, selectedItem, selectedMenuItemId}) {
 const [quantity, setQuantity] = useState(0);
 const [menuItemId, setMenuItemId] = useState(selectedMenuItemId);
+const orderAddedMsg = document.querySelector(".order-added-msg");
+const orderNotAddedMsg = document.querySelector(".order-not-added-msg");
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,13 +24,19 @@ const handleSubmit = (e) => {
         })
             .then((response) => {
                 if (response.ok) {
-                    alert('Item added!');
-                    location.reload();
+                    orderAddedMsg.classList.add("active");
+                    setTimeout(() => {
+                        location.reload();
+                      }, "1000");
+                    
                 }
             })
             .catch((err) => {
                 console.error(err);
-                alert('Could not add item!');
+                orderNotAddedMsg.classList.add("active");
+                setTimeout(() => {
+                    location.reload();
+                  }, "1000");
             });
     }
 
@@ -57,6 +65,8 @@ function minusCountHandler(){
                     <p style={{fontSize:20}}>{quantity}</p>
                     <i className="fa-solid fa-circle-plus" onClick={addCountHandler}></i>
                     </div>
+                        <p className="order-added-msg">Order Added!</p>
+                        <p className="order-not-added-msg">Could not add order.</p>
                         <button className="add-to-order-btn">Add To Order</button>
                 </form>
             </div>
