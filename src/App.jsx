@@ -1,8 +1,8 @@
 import "./styles.css"
 import Navbar from "./Navbar"
 import Menu from "./Menu"
-import Footer from "./Footer"
 import Pay from "./Pay"
+import Home from "./Home"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
 
 function App() {
@@ -13,6 +13,9 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/menu">
           <Menu />
         </Route>
         <Route exact path="/pay">
@@ -21,7 +24,7 @@ function App() {
 
       </Switch>
 
-      <Footer />
+     
       </Router>
     </>
   )

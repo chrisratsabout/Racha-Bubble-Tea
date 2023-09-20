@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import AddToOrderModal from "./AddToOrderModal";
+import Footer from "./Footer";
 
 export default function Menu() {
     const [isActive, setActive] = useState(false);
@@ -254,6 +255,7 @@ export default function Menu() {
                 </div>
 
             </div>
+            <Footer />
             {isActive && <AddToOrderModal closeAddToOrderModal={setActive} selectedItem={selectedItem} selectedMenuItemId={selectedMenuItemId} />}
         </>
     )

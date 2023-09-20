@@ -104,13 +104,84 @@ a {
 
 
 
-/*** TOP SECTION ***/
+/*** HOME TOP SECTION ***/
 .top-container {
     margin: 35px auto 0 auto;
     text-align: center;
     
 }
 
+.top-section,
+.about-section,
+.menu-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px auto 20px auto;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.top-section-left,
+.about-section-left,
+.menu-section-left,
+.top-section-right,
+.about-section-right,
+.menu-section-right {
+    width: 350px;
+    padding: 10px;
+    line-height: 1.3rem;
+    text-align: center;
+}
+
+.top-section-left {
+    line-height: 1.5;
+}
+
+.distinct-text {
+    color: var(--main-color);
+}
+
+.top-section-picture {
+    padding-top: 35px;
+    width: 100%;
+}
+
+.top-section-text {
+    padding-top: 55px;
+}
+
+.cup {
+    height: 300px;
+}
+
+.section-btn {
+    padding: 15px;
+    border: none;
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 10px;
+    margin: 15px 0px;
+    width: 150px;
+}
+
+.section-btn:hover,
+.message-me-btn:hover,
+.go-top-btn:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+    transition: ease-in-out 0.3s;
+}
+
+/***ABOUT SECTION***/
+.section-title {
+    text-align: center;
+    padding-top: 85px;
+    margin-bottom: 35px;
+}
+
+/***MENU PAGE ***/
 .menu-container {
     display: flex;
     justify-content: center;
@@ -168,7 +239,9 @@ a {
     border: none;
     border-radius: 10px;
     font-size: 20px;
+    
  }
+
 
 .fa-plus:hover, 
 .fa-x:hover,
@@ -316,9 +389,13 @@ a {
     padding-top: 15px;
     background-color: rgb(34, 34, 34);
     color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.add-to-order-btn, .view-order-btn, .pay-now-btn {
+.add-to-order-btn, .view-order-btn, .pay-now-btn, .message-me-btn {
     padding: 15px;
     border: none;
     background-color: var(--main-color);
@@ -337,18 +414,63 @@ a {
     font-size: 12px;
 }
 
+.social-btn-container {
+    margin: 35px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    border-radius: 50%;
+    border: none;
+    color: rgb(34, 34, 34);
+}
+
+.social-btn:hover {
+    background-color: var(--main-color);
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.copyright-text {
+    text-align: center;
+    padding-bottom: 20px;
+    color: #959595;
+    font-size: 12px;
+}
+
+.info-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.location, .hours, .phone {
+    width: 274px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+
 /***PAYMENT PAGE***/
 .payment-container {
-    margin: 20px auto;
+    margin: 35px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
+    height: 100vh;
 }
 
 .order-container {
     width: 300px;
-    margin-bottom: 20px;
+   
 }
 
 .pay-order-item {
@@ -357,6 +479,16 @@ a {
 
 .pay-order-item-name {
     font-weight: 600;
+}
+
+.back-to-menu {
+    margin-top: 30px;
+    color: #000;
+}
+
+.back-to-menu:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 /*** NAV BAR MEDIA QUERY***/

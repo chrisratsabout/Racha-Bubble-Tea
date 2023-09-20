@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Cards from 'react-credit-cards'
 import 'react-credit-cards/es/styles-compiled.css'
 import axios from 'axios'
+import Footer from './Footer'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Pay = () => {
     const [number, setNumber] = useState('')
@@ -11,13 +13,15 @@ const Pay = () => {
     const [cvc, setCvc] = useState('')
     const [focus, setFocus] = useState('')
     const [data, setData] = useState([])
-
     const [selectedItems, setSelectedItems] = useState([])
+    const shoppingCartIcon = document.querySelector(".new-view-order-btn")
+
     useEffect(() => {
         axios.get('http://localhost:8080/order')
             .then(res => {
                 setSelectedItems(res.data.selectedItemList)  
                 setData(res.data)
+                console.log(res.data)
             })
             .catch(err => console.log(err))
     }, [])
@@ -32,6 +36,12 @@ const Pay = () => {
         )
     })
 
+    function goBackToMenu() {
+        shoppingCartIcon.classList.remove("hide")
+    }
+        
+    
+
     return (
         <>
 
@@ -40,9 +50,11 @@ const Pay = () => {
                     <h1>My Order:</h1>
                     {order}
                     <hr></hr>
-                    <p>Subtotal: ${data.subtotal.toFixed(2)}</p>
-                    <p>Tax: ${data.taxAmount.toFixed(2)}</p>
-                    <strong>Total: ${data.total.toFixed(2)}</strong>
+                    <p>Subtotal: ${parseFloat(data.subtotal).toFixed(2)}</p>
+                    <p>Tax: ${parseFloat(data.taxAmount).toFixed(2)}</p>
+                    <strong>Total: ${parseFloat(data.total).toFixed(2)}</strong>
+                    <Link to="/menu" onClick={goBackToMenu}><p className='back-to-menu'>Back To Menu</p></Link>
+                   
                 </div>
                 <div className="credit-card-container">
                     <Cards
@@ -89,6 +101,7 @@ const Pay = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
