@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Top() {
+    // const shoppingCartIcon = document.querySelector(".new-view-order-btn")
+
+    // function showCartIcon(){
+    //     console.log(shoppingCartIcon.classList.add("active"))
+    // }
+
     return (
         <>
             <div className="top-section">

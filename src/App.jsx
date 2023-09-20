@@ -4,12 +4,14 @@ import Menu from "./Menu"
 import Pay from "./Pay"
 import Home from "./Home"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
+import ScrollToTop from "./ScrollToTop"
 
 function App() {
 
   return (
     <>
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Switch>
         <Route exact path="/">

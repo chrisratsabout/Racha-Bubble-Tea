@@ -48,6 +48,10 @@ form > input {
     border: 1px solid black;
 }
 
+hr {
+    margin-bottom: 15px;
+}
+
 /*** NAV BAR***/
 
 header {
@@ -96,9 +100,7 @@ a {
     margin-left: 10px;
 }
 
-.new-view-order-btn.hide {
-    visibility: hidden;
-}
+
 
 
 
@@ -239,8 +241,11 @@ a {
     border: none;
     border-radius: 10px;
     font-size: 20px;
-    
  }
+
+ .new-view-order-btn.active {
+    visibility: visible;
+}
 
 
 .fa-plus:hover, 

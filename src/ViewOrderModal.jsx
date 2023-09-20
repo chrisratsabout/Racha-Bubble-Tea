@@ -20,7 +20,7 @@ export default function ViewOrderModal({ closeViewOrderModal, order, subtotal, t
     const handleClick = () => {
 
         closeViewOrderModal(false)
-        shoppingCartIcon.classList.add("hide");
+        shoppingCartIcon.classList.remove("add");
 
     }
 
