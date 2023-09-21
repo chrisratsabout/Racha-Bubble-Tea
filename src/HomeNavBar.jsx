@@ -15,17 +15,21 @@ const HomeNavBar = () => {
         navMenu.classList.remove("active");
     }
 
+    function scrollTop(){
+        window.scrollTo({top: 0})
+    }
+
 
     return (
         <>
           
             <nav className="navbar">
-                <Link to="/" className="nav-branding"><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></Link>
-                <Link className="nav-text" to="/"><h1>Racha Tea Boba and Desserts</h1></Link>
+                <Link to="/" className="nav-branding" onClick={scrollTop}><img src="images/racha-logo.png" alt="nav-logo" className="nav-logo" /></Link>
+                <Link className="nav-text" to="/" onClick={scrollTop}><h1>Racha Tea Boba and Desserts</h1></Link>
 
                 <ul className="nav-menu">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/" className="nav-link" onClick={scrollTop}>Home</Link>
                     </li>
                     <li className="nav-item">
                         <a href="#about-section" className="nav-link" onClick={hideMobileNavLinks}>About</a>
