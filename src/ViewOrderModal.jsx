@@ -4,7 +4,6 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 export default function ViewOrderModal({ closeViewOrderModal, order, subtotal, taxAmount, total, deleteItem, incrementQuantity, decrementQuantity }) {
-    const shoppingCartIcon = document.querySelector(".new-view-order-btn")
     const orderList = order.map((item) => {
         return <div className="order-item" key={item.menuItemId} data-menuitemid={item.menuItemId}>
             <p className="order-item-name"><b>{item.name}</b></p>
@@ -18,10 +17,7 @@ export default function ViewOrderModal({ closeViewOrderModal, order, subtotal, t
     })
 
     const handleClick = () => {
-
         closeViewOrderModal(false)
-        shoppingCartIcon.classList.remove("add");
-
     }
 
 

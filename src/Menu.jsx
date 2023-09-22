@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import AddToOrderModal from "./AddToOrderModal";
 import Footer from "./Footer";
@@ -212,6 +212,7 @@ export default function Menu() {
             <p>${banhMiItem.price.toFixed(2)}</p>
         </div>
     })
+
 
     return (
         <>
