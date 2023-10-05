@@ -1,4 +1,6 @@
-# Racha Order
+# Racha Tea Boba and Desserts Order
+My version of Racha Tea Boba and Desserts ordering page. 
+
 This object-oriented project was created with Java, Spring Boot, and PostgreSQL serving as the backend. The user interface features were built with React. This app offers full CRUD functionality, allowing users to assemble and view their order, update quantities, and remove items as well before finalizing their purchase.
 
 
